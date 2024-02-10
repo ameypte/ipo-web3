@@ -10,17 +10,14 @@ export default function Banner() {
           
           <div class="space-y-8">
             <h1
-              class="font-mullish font-bold text-[40px] leading-[1.2] text-white"
+              class="font-mullish font-bold text-[35px] ml leading-[1.2] text-white"
             >
-              Power your finance, grow your business
+            Unlock Your Company's Potential: IPO Registration Made Simple!
             </h1>
-            <div class="w-6 h-1 bg-greenLight"></div>
-            <p class="font-mullish text-[18px] leading-7 text-white opacity-70">
-              Accept Payments from customers. Automate payouts to vendor's &
-              employees. Never run out of working capital.
-            </p>
+            <div class="w-6 h-1 bg-green-500"></div>
+            
             <button
-              class="py-[14px] px-[18px] bg-lightBlue text-white rounded font-mullish font-bold hover:bg-lightBlue500 transition-all duration-200"
+              class="py-[14px] px-[18px] bg-blue-500 text-white rounded font-mullish font-bold hover:bg-blue-700 transition-all duration-200"
             >
               Sign Up Now
             </button>

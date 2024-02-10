@@ -15,6 +15,13 @@ export default function Home() {
         <div>
             <NavBar />
             <Banner/> 
+            <div className="mt-72">
+            <AddCompBtn />
+            </div>
+            <div >
+      <h1 className="font-mulish font-bold text-4xl text-deepBlue text-center mt-40">Company whose IPO is Listed</h1>
+    <div className="w-6 h-1 bg-green-500 mx-auto my-4"></div>
+    </div>
             <div className="p-11 flex flex-wrap justify-center">
             <Card />
             <Card />
@@ -25,7 +32,7 @@ export default function Home() {
             <Card />
             <Card />
             </div>
-            <AddCompBtn />
+            
         </div>
         </>
     );
