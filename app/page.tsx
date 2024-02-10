@@ -10,9 +10,14 @@ export default function Home() {
     }, []);
 
     return (
-        <>
+        <div>
             <NavBar />
+            <div className="p-11 flex flex-wrap justify-center">
             <Card />
-        </>
+            <Card />
+            <Card />
+            <Card />
+            </div>
+        </div>
     );
 }
