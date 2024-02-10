@@ -3,6 +3,8 @@ import React from 'react'
 import { useState } from 'react';
 
 function NavBar() {
+
+    
     const [wallet, setWallet] = useState(null);
     const [address, setAddress] = useState(null);
 

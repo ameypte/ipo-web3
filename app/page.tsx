@@ -17,7 +17,10 @@ export default function Home() {
             <Card />
             <Card />
             <Card />
-            </div>
-        </div>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+        </>
     );
 }
