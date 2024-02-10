@@ -1,8 +1,54 @@
-// Import necessary modules and components
+"use client";
 import React from "react";
 import NavBar from "@/app/components/NavBar";
+import { useState } from "react";
 
 export default function IPOListingForm() {
+  // State variables to store form values and validation results
+  const [ipoStartDate, setIPOStartDate] = useState("");
+  const [ipoEndDate, setIPOEndDate] = useState("");
+  const [sharePrice, setSharePrice] = useState("");
+  const [lotSize, setLotSize] = useState("");
+
+  // Regex patterns for validation
+  const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/; // Matches YYYY-MM-DDTHH:mm
+  const priceRegex = /^\d+(\.\d{1,2})?$/; // Matches a positive decimal with up to two decimal places
+  const lotSizeRegex = /^\d+$/; // Matches a positive integer
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate IPO starting date
+    if (!dateRegex.test(ipoStartDate)) {
+      alert("Invalid IPO starting date format. Please use YYYY-MM-DDTHH:mm.");
+      return;
+    }
+
+    // Validate IPO ending date
+    if (!dateRegex.test(ipoEndDate)) {
+      alert("Invalid IPO ending date format. Please use YYYY-MM-DDTHH:mm.");
+      return;
+    }
+
+    // Validate Share Price
+    if (!priceRegex.test(sharePrice)) {
+      alert(
+        "Invalid share price format. Please enter a valid positive decimal."
+      );
+      return;
+    }
+
+    // Validate Lot Size
+    if (!lotSizeRegex.test(lotSize)) {
+      alert("Invalid lot size format. Please enter a valid positive integer.");
+      return;
+    }
+
+    // All validations passed, proceed with form submission
+    // Add your logic for submitting the form data to the server or other actions
+    alert("Form submitted successfully!");
+  };
   return (
     <>
       {/* Include the NavBar component */}
@@ -52,68 +98,86 @@ export default function IPOListingForm() {
                   />
                 </div>
 
-                {/* IPO Starting and Ending Date Inputs (Side by Side) */}
                 <div className="flex flex-row space-x-4">
-                {/* IPO Starting Date Input */}
-                <div className="flex-grow">
-                    <label htmlFor="ipoStartDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    IPO Starting Date
+                  {/* IPO Starting Date Input */}
+                  <div className="flex-grow">
+                    <label
+                      htmlFor="ipoStartDate"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      IPO Starting Date
                     </label>
                     <input
-                    type="datetime-local"
-                    name="ipoStartDate"
-                    id="ipoStartDate"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
+                      type="datetime-local"
+                      name="ipoStartDate"
+                      id="ipoStartDate"
+                      value={ipoStartDate}
+                      onChange={(e) => setIPOStartDate(e.target.value)}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required
                     />
-                </div>
+                  </div>
 
-                {/* IPO Ending Date Input */}
-                <div className="flex-grow">
-                    <label htmlFor="ipoEndDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    IPO Ending Date
+                  {/* IPO Ending Date Input */}
+                  <div className="flex-grow">
+                    <label
+                      htmlFor="ipoEndDate"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      IPO Ending Date
                     </label>
                     <input
-                    type="datetime-local"
-                    name="ipoEndDate"
-                    id="ipoEndDate"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
+                      type="datetime-local"
+                      name="ipoEndDate"
+                      id="ipoEndDate"
+                      value={ipoEndDate}
+                      onChange={(e) => setIPOEndDate(e.target.value)}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required
                     />
-                </div>
+                  </div>
                 </div>
 
-                {/* Share Price and Lot Size Inputs (Side by Side) */}
                 <div className="flex flex-row space-x-4">
-                {/* Share Price Input */}
-                <div className="flex-grow">
-                    <label htmlFor="sharePrice" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Share Price
+                  {/* Share Price Input */}
+                  <div className="flex-grow">
+                    <label
+                      htmlFor="sharePrice"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Share Price
                     </label>
                     <input
-                    type="text"
-                    name="sharePrice"
-                    id="sharePrice"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Enter share price"
-                    required
+                      type="text"
+                      name="sharePrice"
+                      id="sharePrice"
+                      value={sharePrice}
+                      onChange={(e) => setSharePrice(e.target.value)}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Enter share price"
+                      required
                     />
-                </div>
+                  </div>
 
-                {/* Lot Size Input */}
-                <div className="flex-grow">
-                    <label htmlFor="lotSize" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Lot Size
+                  {/* Lot Size Input */}
+                  <div className="flex-grow">
+                    <label
+                      htmlFor="lotSize"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Lot Size
                     </label>
                     <input
-                    type="text"
-                    name="lotSize"
-                    id="lotSize"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Enter lot size"
-                    required
+                      type="text"
+                      name="lotSize"
+                      id="lotSize"
+                      value={lotSize}
+                      onChange={(e) => setLotSize(e.target.value)}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Enter lot size"
+                      required
                     />
-                </div>
+                  </div>
                 </div>
 
                 {/* Upload File */}
@@ -168,7 +232,8 @@ export default function IPOListingForm() {
                 <div className="flex flex-row justify-end space-x-4">
                   <button
                     type="button"
-                    className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    onClick={handleSubmit}
+                    className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Save IPO
                   </button>
@@ -188,4 +253,3 @@ export default function IPOListingForm() {
     </>
   );
 }
-
