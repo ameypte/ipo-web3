@@ -13,6 +13,10 @@ export default function Home() {
         <>
             <NavBar />
             <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
         </>
     );
 }
