@@ -5,7 +5,7 @@ export default function Card() {
         <div>
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img class="rounded-t-lg" src="./images/" alt="" />
+                    <img class="rounded-t-lg" src="../images/tata.jpg" alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">
