@@ -12,67 +12,6 @@ const aptos = new Aptos(config);
 function NavBar() {
 
 
-    const [wallet, setWallet] = useState({});
-    const [address, setAddress] = useState(null);
-
-    useEffect(() => {
-        fetchList();
-    }, [wallet, address]);
-
-    const fetchList = async () => {
-        if (!wallet) return [];
-        // change this to be your module account address
-        const moduleAddress = "0x2c8b10208a524284d52da1ba0d6ab45cce9c14d355442382fc26743c5ba6dea9";
-        try {
-          const ipoListResource = await aptos.getAccountResource(
-            {
-              accountAddress:address,
-              resourceType:`${moduleAddress}::ipo::IPOList`
-            }
-          );
-          alert(ipoListResource);
-          console.log(ipoListResource);
-        } catch (e) {
-          alert("Error fetching list: " + e.message);
-        }
-      };
-
-    const getAptosWallet = () => {
-        if ("aptos" in window) {
-            return window.aptos;
-        } else {
-            window.open("https://petra.app/", `_blank`);
-        }
-    };
-
-    const connectToWallet = async () => {
-        const wallet = getAptosWallet();
-        try {
-            const response = await wallet.connect();
-            console.log(response); // { address: string, address: string }
-            setWallet(wallet);
-            console.log(wallet);
-            setAddress(response.address);
-
-            const account = await wallet.account();
-            console.log(account); // { address: string, address: string }
-        } catch (error) {
-            alert(error);
-        }
-    }
-
-    const disconnectWallet = async () => {
-        const wallet = getAptosWallet();
-        try {
-            const response = await wallet.disconnect();
-            console.log(response); // { address: string, address: string }
-            setWallet(null);
-            setAddress(null);
-        } catch (error) {
-            alert(error);
-        }
-    }
-
     return (
         <div>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
