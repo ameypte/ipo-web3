@@ -1,41 +1,9 @@
 
 import React, { useEffect } from 'react'
-import { useState } from 'react';
-const { Account, AccountAddress, Aptos, AptosConfig, Network, NetworkToNetworkName } = require("@aptos-labs/ts-sdk");
 
 
-const APTOS_NETWORK = Network.DEVNET;
-const config = new AptosConfig({ network: APTOS_NETWORK });
-const aptos = new Aptos(config);
+function NavBar( { wallet, setWallet, address, setAddress }) {
 
-
-function NavBar() {
-
-
-    const [wallet, setWallet] = useState({});
-    const [address, setAddress] = useState(null);
-
-    useEffect(() => {
-        fetchList();
-    }, [wallet, address]);
-
-    const fetchList = async () => {
-        if (!wallet) return [];
-        // change this to be your module account address
-        const moduleAddress = "0x2c8b10208a524284d52da1ba0d6ab45cce9c14d355442382fc26743c5ba6dea9";
-        try {
-          const ipoListResource = await aptos.getAccountResource(
-            {
-              accountAddress:address,
-              resourceType:`${moduleAddress}::ipo::IPOList`
-            }
-          );
-          alert(ipoListResource);
-          console.log(ipoListResource);
-        } catch (e) {
-          alert("Error fetching list: " + e.message);
-        }
-      };
 
     const getAptosWallet = () => {
         if ("aptos" in window) {
@@ -83,7 +51,7 @@ function NavBar() {
                     </a>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         {
-                            wallet ? (
+                            address ? (
                                 <div className="flex items-center space-x-3">
                                     <span className="text-gray-900 dark:text-gray-100">{address}</span>
                                     <button type="button" className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"

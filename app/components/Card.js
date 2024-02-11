@@ -3,8 +3,8 @@ import React from "react";
 export default function Card() {
     return (
         
-            
-            <div class="max-w-sm bg-white border m-10 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="mt-42">
+            <div class="max-w-sm  bg-white border m-10 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg" src="./tata.jpg" alt="" />
                 </a>
@@ -20,6 +20,7 @@ export default function Card() {
                         </svg>
                     </a>
                 </div>
+            </div>
             </div>
     )
 }

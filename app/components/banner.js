@@ -15,12 +15,7 @@ export default function Banner() {
             Unlock Your Company's Potential: IPO Registration Made Simple!
             </h1>
             <div class="w-6 h-1 bg-green-500"></div>
-            
-            <button
-              class="py-[14px] px-[18px] bg-blue-500 text-white rounded font-mullish font-bold hover:bg-blue-700 transition-all duration-200"
-            >
-              Sign Up Now
-            </button>
+          
           </div>
   
           <img
