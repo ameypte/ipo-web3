@@ -1,16 +1,45 @@
 
 import React, { useEffect } from 'react'
-import { useState } from 'react';
-const { Account, AccountAddress, Aptos, AptosConfig, Network, NetworkToNetworkName } = require("@aptos-labs/ts-sdk");
 
 
-const APTOS_NETWORK = Network.DEVNET;
-const config = new AptosConfig({ network: APTOS_NETWORK });
-const aptos = new Aptos(config);
+function NavBar( { wallet, setWallet, address, setAddress }) {
 
 
-function NavBar() {
+    const getAptosWallet = () => {
+        if ("aptos" in window) {
+            return window.aptos;
+        } else {
+            window.open("https://petra.app/", `_blank`);
+        }
+    };
 
+    const connectToWallet = async () => {
+        const wallet = getAptosWallet();
+        try {
+            const response = await wallet.connect();
+            console.log(response); // { address: string, address: string }
+            setWallet(wallet);
+            console.log(wallet);
+            setAddress(response.address);
+
+            const account = await wallet.account();
+            console.log(account); // { address: string, address: string }
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    const disconnectWallet = async () => {
+        const wallet = getAptosWallet();
+        try {
+            const response = await wallet.disconnect();
+            console.log(response); // { address: string, address: string }
+            setWallet(null);
+            setAddress(null);
+        } catch (error) {
+            alert(error);
+        }
+    }
 
     return (
         <div>
@@ -22,7 +51,7 @@ function NavBar() {
                     </a>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         {
-                            wallet ? (
+                            address ? (
                                 <div className="flex items-center space-x-3">
                                     <span className="text-gray-900 dark:text-gray-100">{address}</span>
                                     <button type="button" className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
