@@ -27,7 +27,7 @@ export default function IPOApplicationForm() {
   return (
     <>
       <NavBar />
-      <form className="max-w-sm mx-auto" onSubmit={handleApplyIPO}>
+      <form className="max-w-sm mx-auto mt-16" onSubmit={handleApplyIPO}>
         <div className="mb-5">
           <label
             htmlFor="companyName"
