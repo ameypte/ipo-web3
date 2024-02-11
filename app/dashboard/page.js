@@ -9,29 +9,12 @@ export default function dashboard() {
         <div>
             <NavBar />
             <section
-        class=" bg-no-repeat bg-cover pt-[10rem] pb-[180px] md:pb-[500px] "
+        class=" bg-no-repeat bg-cover  "
       >
         <div class="w-10/12 md:w-11/12 max-w-[1080px] mx-auto relative pt-4">
          
-          <h2
-            class="hidden md:block font-mullish text-center text-2xl leading-[1.2] text-white font-extrabold"
-          >
-            Explore Razorpay Business Banking
-          </h2>
           
-          <h2
-            class="inline-block md:hidden font-mullish text-[2.5rem] leading-[1.2] font-extrabold mx-auto text-white"
-          >
-            Explore
-            <img
-              src="./razorpayX.svg"
-              width="168px"
-              loading="lazy"
-              height="32px"
-              alt="razorpayX"
-            />
-            <span class="text-greenLight">Business Banking</span>
-          </h2>
+          
           <div
             class="w-6 h-1 bg-greenLight md:mx-auto mt-4 mb-6 md:mb-20"
           ></div>
@@ -53,10 +36,7 @@ export default function dashboard() {
             />
             <div class="w-full p-4 md:p-10 py-12 bg-[#181c2e] z-20">
               
-              <img
-                src="./Xicon.svg"
-                class="bg-lightBlue absolute right-2 top-12 w-12 h-12 rounded-full z-10 featureCardIcon transition-all duration-200 drop-shadow-xl md:hidden"
-              />
+              
              
               <div
                 class="absolute border-t-[6rem] border-l-[6rem] border-t-transparent border-l-[#181c2e] z-20 top-6 right-0 md:hidden"
@@ -73,16 +53,9 @@ export default function dashboard() {
                 <h3
                   class="hidden md:block font-mullish text-xl md:leading-10 md:text-[28px] font-bold md:max-w-[500px] max-w-[190px] text-white"
                 >
-                  Manage your company’s finances with
-                  <img
-                    src="./images/razorpayX.svg"
-                    width="168px"
-                    loading="lazy"
-                    height="32px"
-                    alt="razorpayX"
-                    class="inline"
-                  />
-                  <span class="text-greenLight">Business Banking</span>
+                  IPO Information
+                  
+                  <div class="text-green-400">Tata Power</div>
                 </h3>
                 
                 <ul class="space-y-2 my-6 md:my-0">
@@ -147,7 +120,7 @@ export default function dashboard() {
                 </div>
               </div>
               <img
-                src="./buisness-banking.png"
+                src="./tata.jpg"
                 alt="payment suite"
                 class="hidden md:block md:max-w-[400px] lg:max-w-[600px] absolute right-0 lg:top-0 bottom-0 z-[5]"
               />
