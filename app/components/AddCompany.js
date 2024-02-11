@@ -12,6 +12,7 @@ const aptos = new Aptos(config);
 
 export default function IPOListingForm({ wallet, setWallet, address, setAddress }) {
 
+
   const [ipoStartDate, setIPOStartDate] = useState("");
   const [ipoEndDate, setIPOEndDate] = useState("");
   const [sharePrice, setSharePrice] = useState("");
@@ -60,47 +61,22 @@ export default function IPOListingForm({ wallet, setWallet, address, setAddress 
   const priceRegex = /^\d+(\.\d{1,2})?$/;
   const lotSizeRegex = /^\d+$/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate Company Name
-    if (!companyName.trim()) {
-      alert("Company name is required.");
-      return;
-    }
-
-    // Validate Company Description
-    if (!companyDescription.trim()) {
-      alert("Company description is required.");
-      return;
-    }
-
-    // Validate IPO starting date
-    if (!dateRegex.test(ipoStartDate)) {
-      alert("Invalid IPO starting date format. Please use YYYY-MM-DDTHH:mm.");
-      return;
-    }
-
-    // Validate IPO ending date
-    if (!dateRegex.test(ipoEndDate)) {
-      alert("Invalid IPO ending date format. Please use YYYY-MM-DDTHH:mm.");
-      return;
-    }
-
-    // Validate Share Price
-    if (!priceRegex.test(sharePrice)) {
-      alert(
-        "Invalid share price format. Please enter a valid positive decimal."
-      );
-      return;
-    }
-
-    // Validate Lot Size
-    if (!lotSizeRegex.test(lotSize)) {
-      alert("Invalid lot size format. Please enter a valid positive integer.");
-      return;
-    }
-
+  
+    
+      const responce = await fetch("/api/upload/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ companyName,ipoStartDate ,ipoEndDate,lotSize,companyDescription,totalLots}),
+      });
+  
+      const data = await responce.json();
+     
+      console.log(data);
     // All validations passed, proceed with form submission
     alert("Form submitted successfully!");
   };
@@ -126,6 +102,7 @@ export default function IPOListingForm({ wallet, setWallet, address, setAddress 
                     type="text"
                     name="recipeName"
                     id="recipeName"
+                    onChange={(e)=>setCompanyName(e.target.value)}
                     className="bg-gray-50 border border-gray-300  text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter company name"
                     required
